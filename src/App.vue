@@ -14,7 +14,7 @@ export default {
   },
   mounted() {
     let data = this.getData()
-    data.then((response) => {
+    data.then((response: string) => {
       console.log(response);
     })
   },
@@ -25,9 +25,9 @@ export default {
       space: import.meta.env.VITE_CONTENTFUL_SPACE || '',
       accessToken: import.meta.env.VITE_CONTENTFUL_ACCESSTOKEN || ''
     });
-    await client.getEntries().then(function (entries) {
+    await client.getEntries().then(function (entries: any) {
       // log the title for all the entries that have it
-      entries.items.forEach(function (entry) {
+      entries.items.forEach(function (entry: any) {
         if (entry.fields.meta === 'heading') {
           headingEl = entry.fields.contentValue.content[0].content[0]['value'];
         }

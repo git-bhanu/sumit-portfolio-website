@@ -13,7 +13,7 @@ export default {
   },
   mounted() {
     let data = this.getData()
-    data.then((response) => {
+    data.then((response: string) => {
       this.resumeURL = `https:${response}`;
     })
   },
@@ -24,9 +24,9 @@ export default {
             space: import.meta.env.VITE_CONTENTFUL_SPACE || '',
             accessToken: import.meta.env.VITE_CONTENTFUL_ACCESSTOKEN || ''
         });
-        await client.getEntry('5BtHJZweBavyva9FxAmeuN').then(function (entry) {
+        await client.getEntry('5BtHJZweBavyva9FxAmeuN').then(function (entry: any) {
         // log the title for all the entries that have it
-        url = entry.fields.contentValue.content[0].data.target.fields.file.url;
+        url = entry?.fields.contentValue.content[0].data.target.fields.file.url;
         })
 
         return url;
