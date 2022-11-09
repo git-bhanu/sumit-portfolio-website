@@ -1,12 +1,18 @@
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 import { createClient } from "contentful"
+const pinia = createPinia()
 
-// This is a test integration and these tokens will be moved to ENV file.
-const client = createClient({
-  space: import.meta.env.VITE_CONTENTFUL_SPACE || '',
-  accessToken: import.meta.env.VITE_CONTENTFUL_ACCESSTOKEN || ''
-});
+import './style.scss'
+import App from '@/App.vue'
+import router from './router'
 
-client.getEntry('5KBaKfSYX4wm0OqOFmyRS1')
-.then(entry => {
-  console.log(entry);
+createApp(App)
+.use(router)
+.use(pinia)
+.mount('#app')
+
+export const client = createClient({
+    space: import.meta.env.VITE_CONTENTFUL_SPACE || '',
+    accessToken: import.meta.env.VITE_CONTENTFUL_ACCESSTOKEN || ''
 });

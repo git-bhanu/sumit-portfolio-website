@@ -1,0 +1,13 @@
+@import "@/assets/styles/_variable.scss";
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;600&display=swap');
+
+html, body {
+  font-family: $font;
+  background: $dark-black;
+  color: $off-white;
+}
+
+a {
+  color: $off-white;
+  text-decoration: $off-white;
+}
