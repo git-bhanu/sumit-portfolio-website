@@ -36,36 +36,43 @@ export default {
 </script>
 
 <template>
-    <ol class="menu">
-        <li>
-            <router-link to="/">home</router-link>
-        </li>
-        <li>
-            <router-link to="/about">about</router-link>
-        </li>        
-        <!-- <li>
-            <router-link to="/contact">contact</router-link>
-        </li> -->
-        <li>
-            <a :href="resumeURL" download>
-                <button>download resume</button>
-            </a>
-        </li>            
-    </ol>
+  <div class="menu-wrapper">
+      <ol class="menu">
+          <li>
+              <router-link to="/">home</router-link>
+          </li>
+          <li>
+              <router-link to="/about">about</router-link>
+          </li>        
+          <!-- <li>
+              <router-link to="/contact">contact</router-link>
+          </li> -->
+          <li>
+              <a :href="resumeURL" download>
+                  <button>download resume</button>
+              </a>
+          </li>            
+      </ol>
+  </div>
 </template>
 
 <style lang="scss">
 @import "@/assets/styles/_variable.scss";
 
+.menu-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .menu {
+    width: 50%;
     list-style: none;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
     margin-top: 50px;
     
     li {
-        margin-right: 30px;
+        margin-right: 90px;
         font-size: 18px;
 
         button {
