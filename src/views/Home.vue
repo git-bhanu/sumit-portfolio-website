@@ -32,7 +32,8 @@
     .container {
         width: 50%;
         h1 {
-            font-size: 4em;
+            font-size: 80px;
+            font-weight: 800;
         }
     }
 
