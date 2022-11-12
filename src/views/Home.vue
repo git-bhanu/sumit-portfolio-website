@@ -41,6 +41,7 @@
         display: flex;
         margin-top: 120px;
         font-size: 15px;
+        font-weight: 600;
 
         span:nth-child(1) {
             margin-right: 60px; 
