@@ -9,7 +9,7 @@ import xd from '@/assets/svgs/xd.svg?url'
 
 interface Project {
     title: string,
-    softwaresUsed: string[],
+    softwaresUsed: {icon: string, title: string}[],
     description: string,
     category: Category,
     coverImage: string,
@@ -23,6 +23,14 @@ enum CategoryEnum {
     'ThreeDProjects' = "3d projects",
     'graphicDesign' = "graphic design",
     'doodles' = "doodles",
+}
+
+enum SoftwareUsedEnum {
+    'adobePhotoshop' = "Adobe Photoshop",
+    'adobeIllustrator' = "Adobe Illustrator",
+    'adobeIndesign' = "Adobe Indesign",
+    'blender' = "Blendr",
+    'adobeXD' = "Abode XD",
 }
 
 
@@ -73,24 +81,39 @@ export default {
     getCategoryName(category: Category): CategoryEnum {
         return this.CategoryEnum[category];
     },
-    getIcons(softwaresUsed: SoftwareUsed[]): string[] {
-        let softwareBuffer: string[] = []; 
+    getIcons(softwaresUsed: SoftwareUsed[]): {icon: string, title: string}[] {
+        let softwareBuffer: {icon: string, title: string}[] = []; 
         softwaresUsed.forEach((software: SoftwareUsed) => {
             switch (software) {
                 case "adobePhotoshop":
-                    softwareBuffer.push(photoshop);
+                    softwareBuffer.push({
+                        icon: photoshop,
+                        title: SoftwareUsedEnum[software]
+                    });
                     break;
                 case "adobeIndesign":
-                    softwareBuffer.push(indesign);
+                    softwareBuffer.push({
+                        icon: indesign,
+                        title: SoftwareUsedEnum[software]
+                    });
                     break;
                 case "adobeIllustrator":
-                    softwareBuffer.push(illustrator);
+                    softwareBuffer.push({
+                        icon: illustrator,
+                        title: SoftwareUsedEnum[software]
+                    });             
                     break; 
                 case "blender":
-                    softwareBuffer.push(blender);
+                    softwareBuffer.push({
+                        icon: blender,
+                        title: SoftwareUsedEnum[software]
+                    });                    
                     break;
                 case "adobeXD":
-                    softwareBuffer.push(xd);
+                    softwareBuffer.push({
+                        icon: xd,
+                        title: SoftwareUsedEnum[software]
+                    });                     
                     break;                    
                 default:
                     break;
@@ -162,10 +185,13 @@ export default {
                 <a :href="project.behanceLink ? project.behanceLink : void(0)" target="_blank">
                     <p v-text="project.description"></p>
                 </a>
-                <span style="margin-top: 30px">
-                    <img 
+                <span style="margin-top: 30px;transition: all 0.2s ease-in-out;">
+                    <img
+                    style="cursor: pointer;"
                     v-for="icon in project.softwaresUsed"
-                    :src="`${icon}`" />
+                    :src="`${icon.icon}`"
+                    :title="icon.title"
+                    />
                 </span>
             </div>
         </div>
@@ -186,19 +212,21 @@ export default {
 
 .project {
     margin-top: 40px;
+    transition: all 2s ease-in-out;
 
     .project-item {
         display: flex;
         margin-bottom: 30px;
-        height: 370px;
+        height: 300px;
 
         .cover {
-            width: 40%;
+            width: 50%;
             margin-right: 30px;
             border-radius: 12px;
             overflow: hidden;
             background-size: cover;
             background-position: center;
+            transition: all 0.2s ease-in-out;
         }
         .meta {
             width: 50%;
@@ -207,10 +235,12 @@ export default {
             h2 {
                 margin-top: 0;
                 font-weight: 600;
+                transition: all 0.2s ease-in-out;
             }
 
             p {
                 line-height: 1.6em;
+                transition: all 0.2s ease-in-out;
             }
         }
     }
@@ -226,6 +256,7 @@ export default {
         transition: all 0.2s ease-in-out;
         border-radius: 7px;
         background-color: $light-black;
+        font-size: 16px;
 
         &:hover {
             background-color: $off-white;
