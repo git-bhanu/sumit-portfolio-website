@@ -13,10 +13,10 @@ export default {
     Header,
   },
   mounted() {
-    let data = this.getData()
-    data.then((response: string) => {
-      console.log(response);
-    })
+    // let data = this.getData()
+    // data.then((response: string) => {
+    //   console.log(response);
+    // })
   },
   methods: {
     async getData() {
