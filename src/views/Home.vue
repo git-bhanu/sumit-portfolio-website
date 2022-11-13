@@ -44,6 +44,7 @@ export default {
     align-items: center;
     width: 100%;
     height: 80vh;
+    padding-bottom: 50px;
 
     .container {
         width: 50%;
@@ -55,7 +56,7 @@ export default {
 
     .bottom-tile {
         display: flex;
-        margin-top: 120px;
+        margin-top: 60px;
         font-size: 16px;
         font-weight: 600;
 

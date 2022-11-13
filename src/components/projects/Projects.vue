@@ -1,5 +1,10 @@
 <script lang="ts">
 import { createClient } from "contentful"
+import photoshop from '@/assets/svgs/photoshop.svg?url'
+import indesign from '@/assets/svgs/indesign.svg?url'
+import illustrator from '@/assets/svgs/illustrator.svg?url'
+import blender from '@/assets/svgs/blender.svg?url'
+import xd from '@/assets/svgs/xd.svg?url'
 
 
 interface Project {
@@ -20,15 +25,9 @@ enum CategoryEnum {
     'doodles' = "doodles",
 }
 
-// enum SoftwareUsedEnum {
-//     'adobePhotoshop' = "identity design",
-//     'adobeIllustrator' = "ui ux",
-//     'adobeIndesign' = "publication design",
-//     'blender' = "3d projects",
-//     'adobeXD' = "graphic design",
-// }
 
 type Category = 'identityDesign' | 'uiux' | 'publicationDesign' | 'ThreeDProjects' | 'graphicDesign' | 'doodles';
+type SoftwareUsed = 'adobePhotoshop' | 'adobeIllustrator' | 'adobeIndesign' | 'blender' | 'adobeXD';
 
 export default {
   name: 'Projects',
@@ -38,6 +37,7 @@ export default {
         activeCategory: '',
         CategoryEnum: CategoryEnum,
         projects: [] as Project[],
+        activeProject: [] as Project[],
     }
   },
   components: {
@@ -46,7 +46,7 @@ export default {
     this.getProjects().then((project: Project[]) => {
         this.projects = project;
         this.setCategories();
-        this.activeCategory = this.categories[0];
+        this.handleCategoryChange(this.categories[0]);
     });
   },
   computed: {
@@ -63,9 +63,40 @@ export default {
   methods: {
     handleCategoryChange(category: Category) : void {
         this.activeCategory = category;
+        this.activeProject = this.projects.filter((project: Project) => {
+            if (project.category !== this.activeCategory) {
+                return false;
+            }
+            return true;
+        })
     },
     getCategoryName(category: Category): CategoryEnum {
         return this.CategoryEnum[category];
+    },
+    getIcons(softwaresUsed: SoftwareUsed[]): string[] {
+        let softwareBuffer: string[] = []; 
+        softwaresUsed.forEach((software: SoftwareUsed) => {
+            switch (software) {
+                case "adobePhotoshop":
+                    softwareBuffer.push(photoshop);
+                    break;
+                case "adobeIndesign":
+                    softwareBuffer.push(indesign);
+                    break;
+                case "adobeIllustrator":
+                    softwareBuffer.push(illustrator);
+                    break; 
+                case "blender":
+                    softwareBuffer.push(blender);
+                    break;
+                case "adobeXD":
+                    softwareBuffer.push(xd);
+                    break;                    
+                default:
+                    break;
+            }
+        })
+        return softwareBuffer;
     },
     async getProjects() {
         let localProject: Project[] = [];
@@ -81,7 +112,7 @@ export default {
             localProject.push({
                 title: element.fields.title,
                 description: element.fields.description,
-                softwaresUsed: element.fields.softwaresUsed,
+                softwaresUsed: this.getIcons(element.fields.softwaresUsed as SoftwareUsed[]),
                 coverImage: element.fields.coverImage?.fields.file.url,
                 behanceLink: element.fields.behanceLink,
                 category: element.fields.category[0],
@@ -116,6 +147,31 @@ export default {
             <p > {{ `${getCategoryName(category)}` }}</p>
         </span>
     </div>
+    <div class="project content">
+        <div
+        v-for="(project, index) in activeProject" 
+        :key="index"
+        >
+        <div class="project-item">
+            <a class="cover" :href="project.behanceLink ? project.behanceLink : void(0)" target="_blank" :style="`background-image: url(${project.coverImage})`">
+            </a>
+            <div class="meta">
+                <a :href="project.behanceLink ? project.behanceLink : void(0)" target="_blank">
+                    <h2 v-text="project.title"></h2>
+                </a>
+                <a :href="project.behanceLink ? project.behanceLink : void(0)" target="_blank">
+                    <p v-text="project.description"></p>
+                </a>
+                <span style="margin-top: 30px">
+                    <img 
+                    v-for="icon in project.softwaresUsed"
+                    :src="`${icon}`" />
+                </span>
+            </div>
+        </div>
+ 
+        </div>
+    </div>
   </div>
 </template>
 
@@ -126,6 +182,38 @@ export default {
 .project-wrapper {
     background-color: $dark-black;
     padding: 80px 0;
+}
+
+.project {
+    margin-top: 40px;
+
+    .project-item {
+        display: flex;
+        margin-bottom: 30px;
+        height: 370px;
+
+        .cover {
+            width: 40%;
+            margin-right: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+        }
+        .meta {
+            width: 50%;
+            font-size: 20px;
+
+            h2 {
+                margin-top: 0;
+                font-weight: 600;
+            }
+
+            p {
+                line-height: 1.6em;
+            }
+        }
+    }
 }
 
 .categories {
