@@ -48,7 +48,7 @@ export default {
               <router-link to="/contact">contact</router-link>
           </li> -->
           <li>
-              <a :href="resumeURL" download>
+              <a :href="resumeURL" download target="_blank">
                   <button>download resume</button>
               </a>
           </li>            
