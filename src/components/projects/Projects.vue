@@ -6,9 +6,9 @@ interface Project {
     title: string,
     softwaresUsed: string[],
     description: string,
-    category: string[],
+    category: Category,
     coverImage: string,
-    behanceLink?: sting,
+    behanceLink?: string,
 }
 
 enum CategoryEnum {
@@ -20,13 +20,13 @@ enum CategoryEnum {
     'doodles' = "doodles",
 }
 
-enum SoftwareUsedEnum {
-    'adobePhotoshop' = "identity design",
-    'adobeIllustrator' = "ui ux",
-    'adobeIndesign' = "publication design",
-    'blender' = "3d projects",
-    'adobeXD' = "graphic design",
-}
+// enum SoftwareUsedEnum {
+//     'adobePhotoshop' = "identity design",
+//     'adobeIllustrator' = "ui ux",
+//     'adobeIndesign' = "publication design",
+//     'blender' = "3d projects",
+//     'adobeXD' = "graphic design",
+// }
 
 type Category = 'identityDesign' | 'uiux' | 'publicationDesign' | 'ThreeDProjects' | 'graphicDesign' | 'doodles';
 
@@ -68,7 +68,7 @@ export default {
         return this.CategoryEnum[category];
     },
     async getProjects() {
-        let localProject = [];
+        let localProject: Project[] = [];
         const client = createClient({
             space: import.meta.env.VITE_CONTENTFUL_SPACE || '',
             accessToken: import.meta.env.VITE_CONTENTFUL_ACCESSTOKEN || ''
@@ -76,9 +76,8 @@ export default {
         await client.getEntries({
             content_type: 'project',
             select: 'fields'
-        }).then(function (response: any[]) {
-        
-        response.items.forEach(element => {
+        }).then((response: any) => {
+         response.items.forEach((element: any) => {
             localProject.push({
                 title: element.fields.title,
                 description: element.fields.description,
@@ -91,7 +90,7 @@ export default {
     })
     return localProject;
     },
-    setCategories(): Category[]{
+    setCategories(): void {
         let uniqueCategory: Category[] = []
         this.projects.forEach((element: Project) => {
             if (!uniqueCategory.includes(element.category)) {
