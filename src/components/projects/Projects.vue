@@ -1,6 +1,16 @@
 <script lang="ts">
 import { createClient } from "contentful"
 
+
+interface Project {
+    title: string,
+    softwaresUsed: string[],
+    description: string,
+    category: string[],
+    coverImage: string,
+    behanceLink?: sting,
+}
+
 enum CategoryEnum {
     'identityDesign' = "identity design",
     'uiux' = "ui ux",
@@ -10,22 +20,45 @@ enum CategoryEnum {
     'doodles' = "doodles",
 }
 
+enum SoftwareUsedEnum {
+    'adobePhotoshop' = "identity design",
+    'adobeIllustrator' = "ui ux",
+    'adobeIndesign' = "publication design",
+    'blender' = "3d projects",
+    'adobeXD' = "graphic design",
+}
+
 type Category = 'identityDesign' | 'uiux' | 'publicationDesign' | 'ThreeDProjects' | 'graphicDesign' | 'doodles';
 
 export default {
   name: 'Projects',
   data() {
     return {
-        categories: ['identityDesign', 'uiux', 'publicationDesign', 'ThreeDProjects', 'graphicDesign', 'doodles'] as Category[],
+        categories: [] as Category[],
         activeCategory: '',
         CategoryEnum: CategoryEnum,
+        projects: [] as Project[],
     }
   },
   components: {
   },
   mounted() {
-    this.activeCategory = this.categories[0];
-    this.getProjects();
+    this.getProjects().then((project: Project[]) => {
+        this.projects = project;
+        this.setCategories();
+        this.activeCategory = this.categories[0];
+    });
+  },
+  computed: {
+    categories(): Category[]{
+        let uniqueCategory: Category[] = []
+        this.projects.forEach((element: Project) => {
+            if (!uniqueCategory.includes(element.category)) {
+                uniqueCategory.push(element.category);
+            }
+        });
+        return uniqueCategory;
+    }
   },
   methods: {
     handleCategoryChange(category: Category) : void {
@@ -35,6 +68,7 @@ export default {
         return this.CategoryEnum[category];
     },
     async getProjects() {
+        let localProject = [];
         const client = createClient({
             space: import.meta.env.VITE_CONTENTFUL_SPACE || '',
             accessToken: import.meta.env.VITE_CONTENTFUL_ACCESSTOKEN || ''
@@ -42,11 +76,31 @@ export default {
         await client.getEntries({
             content_type: 'project',
             select: 'fields'
-        }).then(function (response: any) {
-        // log the title for all the entries that have it
-            console.log(response);
-        })
+        }).then(function (response: any[]) {
+        
+        response.items.forEach(element => {
+            localProject.push({
+                title: element.fields.title,
+                description: element.fields.description,
+                softwaresUsed: element.fields.softwaresUsed,
+                coverImage: element.fields.coverImage?.fields.file.url,
+                behanceLink: element.fields.behanceLink,
+                category: element.fields.category[0],
+            });
+        });
+    })
+    return localProject;
     },
+    setCategories(): Category[]{
+        let uniqueCategory: Category[] = []
+        this.projects.forEach((element: Project) => {
+            if (!uniqueCategory.includes(element.category)) {
+                uniqueCategory.push(element.category);
+            }
+        });
+        console.log(this.categories);
+        this.categories = uniqueCategory;
+    }
   }
 }
 </script>
