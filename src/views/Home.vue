@@ -1,5 +1,20 @@
-<script setup lang="ts">
+<script lang="ts">
+import Projects from '../components/projects/Projects.vue';
 
+export default {
+  name: 'Home',
+  data() {
+    return {
+    }
+  },
+  components: {
+    Projects,
+  },
+  mounted() {
+  },
+  methods: {
+  }
+}
 </script>
 
 <template>
@@ -19,6 +34,7 @@
         </div>
     </div>
 </div>
+<Projects />
 </template>
 
 <style lang="scss" scoped>
@@ -40,7 +56,7 @@
     .bottom-tile {
         display: flex;
         margin-top: 120px;
-        font-size: 15px;
+        font-size: 16px;
         font-weight: 600;
 
         span:nth-child(1) {

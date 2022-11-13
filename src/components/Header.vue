@@ -73,7 +73,7 @@ export default {
     
     li {
         margin-right: 90px;
-        font-size: 18px;
+        font-size: 16px;
 
         button {
             background-color: $off-white;
@@ -81,7 +81,7 @@ export default {
             border-radius: 7px;
             font-family: $font;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 16px;
             cursor: pointer;
         }
     }

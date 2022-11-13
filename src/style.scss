@@ -3,11 +3,31 @@
 
 html, body {
   font-family: $font;
-  background: $dark-black;
+  background: $light-black;
   color: $off-white;
 }
 
 a {
   color: $off-white;
   text-decoration: $off-white;
+}
+
+.content {
+  margin: auto;
+
+  @media screen and (max-width: $sm) {
+    max-width: $sm;
+  }
+  @media screen and (min-width: $md) {
+    max-width: $md;
+  }
+  @media screen and (min-width: $lg) {
+    max-width: $lg;
+  }
+  @media screen and (min-width: $xl) {
+    max-width: $xl;
+  }
+  @media screen and (min-width: $xxl) {
+    max-width: $xxl;
+  }  
 }
