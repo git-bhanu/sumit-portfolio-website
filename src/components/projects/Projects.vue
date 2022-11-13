@@ -29,7 +29,7 @@ enum SoftwareUsedEnum {
     'adobePhotoshop' = "Adobe Photoshop",
     'adobeIllustrator' = "Adobe Illustrator",
     'adobeIndesign' = "Adobe Indesign",
-    'blender' = "Blendr",
+    'blender' = "Blender",
     'adobeXD' = "Abode XD",
 }
 
@@ -56,17 +56,6 @@ export default {
         this.setCategories();
         this.handleCategoryChange(this.categories[0]);
     });
-  },
-  computed: {
-    categories(): Category[]{
-        let uniqueCategory: Category[] = []
-        this.projects.forEach((element: Project) => {
-            if (!uniqueCategory.includes(element.category)) {
-                uniqueCategory.push(element.category);
-            }
-        });
-        return uniqueCategory;
-    }
   },
   methods: {
     handleCategoryChange(category: Category) : void {
@@ -146,13 +135,18 @@ export default {
     },
     setCategories(): void {
         let uniqueCategory: Category[] = []
+        const order = {'identityDesign': 1, 'uiux': 2, 'publicationDesign': 3, 'ThreeDProjects': 4, 'graphicDesign': 5, 'doodles': 5, default: Number.MAX_VALUE};
         this.projects.forEach((element: Project) => {
             if (!uniqueCategory.includes(element.category)) {
                 uniqueCategory.push(element.category);
             }
         });
-        console.log(this.categories);
-        this.categories = uniqueCategory;
+
+        const sorted = uniqueCategory.sort((a: Category, b: Category): number => {
+            return (order[a] - order[b] || a > b || -(a < b)) as number;
+        });
+
+        this.categories = sorted;
     }
   }
 }
