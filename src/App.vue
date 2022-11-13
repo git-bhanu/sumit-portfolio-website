@@ -42,7 +42,7 @@ export default {
 
 
 <template>
-  <div class="content">
+  <div>
     <Header/>
     <main>
       <router-view />
@@ -54,25 +54,5 @@ export default {
   
 <style lang="scss">
 @import "@/assets/styles/_variable.scss";
-
-.content {
-  margin: auto;
-
-  @media screen and (max-width: $sm) {
-    max-width: $sm;
-  }
-  @media screen and (min-width: $md) {
-    max-width: $md;
-  }
-  @media screen and (min-width: $lg) {
-    max-width: $lg;
-  }
-  @media screen and (min-width: $xl) {
-    max-width: $xl;
-  }
-  @media screen and (min-width: $xxl) {
-    max-width: $xxl;
-  }  
-}
 </style>
   
