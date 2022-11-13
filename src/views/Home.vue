@@ -18,7 +18,7 @@ export default {
 </script>
 
 <template>
-<div class="hero">
+<div class="hero content">
     <div class="container">
         <h1>
             i believe in learning & getting better with every passing project
@@ -49,7 +49,7 @@ export default {
     .container {
         width: 50%;
         h1 {
-            font-size: 80px;
+            font-size: 68px;
             font-weight: 800;
         }
     }
@@ -58,10 +58,10 @@ export default {
         display: flex;
         margin-top: 60px;
         font-size: 16px;
-        font-weight: 600;
 
         span:nth-child(1) {
             margin-right: 60px; 
+            font-weight: 600;
         }
     }
 }

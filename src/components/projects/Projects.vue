@@ -230,16 +230,17 @@ export default {
         }
         .meta {
             width: 50%;
-            font-size: 20px;
 
             h2 {
                 margin-top: 0;
                 font-weight: 600;
+                font-size: 20px;
                 transition: all 0.2s ease-in-out;
             }
 
             p {
                 line-height: 1.6em;
+                font-size: 20px;
                 transition: all 0.2s ease-in-out;
             }
         }
