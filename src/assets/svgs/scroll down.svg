@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="39" height="176" viewBox="0 0 39 176">
+  <defs>
+    <clipPath id="clip-Artboard_11">
+      <rect width="39" height="176"/>
+    </clipPath>
+  </defs>
+  <g id="Artboard_11" data-name="Artboard – 11" clip-path="url(#clip-Artboard_11)">
+    <rect width="39" height="176" fill="#fff"/>
+    <g id="Group_111" data-name="Group 111" transform="translate(7 1)">
+      <text id="scroll_down" data-name="scroll down" transform="translate(2 94) rotate(-90)" fill="#e3e3e3" font-size="16" font-family="Manrope-SemiBold, Manrope" font-weight="600"><tspan x="0" y="17">scroll down</tspan></text>
+      <g id="Group_110" data-name="Group 110" transform="translate(-704.26 148.835)">
+        <path id="Path_7" data-name="Path 7" d="M709.26,9.23l1.422-1.414,5.434,5.439V-37.262H718.2V13.2l5.421-5.427L725.1,9.263l-7.9,7.9Z" fill="#e3e3e3"/>
+      </g>
+    </g>
+  </g>
+</svg>

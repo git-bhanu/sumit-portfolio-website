@@ -1,6 +1,8 @@
 <script lang="ts">
 import { createClient } from "contentful"
 import Header from '@/components/Header.vue';
+import Footer from '@/components/Footer.vue';
+
 
 export default {
   name: 'App',
@@ -11,6 +13,7 @@ export default {
   },
   components: {
     Header,
+    Footer,
   },
   mounted() {
     // let data = this.getData()
@@ -49,6 +52,7 @@ export default {
       <span>
       </span>
     </main>
+    <Footer/>
   </div>
 </template>
   

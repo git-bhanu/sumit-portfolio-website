@@ -41,9 +41,9 @@ export default {
           <li>
               <router-link to="/">home</router-link>
           </li>
-          <li>
+          <!-- <li>
               <router-link to="/about">about</router-link>
-          </li>        
+          </li>         -->
           <!-- <li>
               <router-link to="/contact">contact</router-link>
           </li> -->
