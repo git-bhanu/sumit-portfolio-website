@@ -3,8 +3,8 @@ import mail from '@/assets/svgs/mail_me_icon.svg?url'
 import whatsapp from '@/assets/svgs/whatsapp.svg?url'
 import behance from '@/assets/svgs/Behance.svg?url'
 import linkedin from '@/assets/svgs/Linkedin.svg?url'
-import instagram from '@/assets/svgs/instagram.svg?url'
-import spotify from '@/assets/svgs/spotify.svg?url'
+import instagram from '@/assets/svgs/Instagram.svg?url'
+import spotify from '@/assets/svgs/Spotify.svg?url'
 
 
 export default {
