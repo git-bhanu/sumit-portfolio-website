@@ -1,5 +1,10 @@
 <script lang="ts">
 import { createClient } from "contentful"
+import behance from '@/assets/svgs/Behance.svg?url'
+import linkedin from '@/assets/svgs/Linkedin.svg?url'
+import instagram from '@/assets/svgs/Instagram.svg?url'
+import spotify from '@/assets/svgs/Spotify.svg?url'
+import mail from '@/assets/svgs/mail.svg?url'
 
 
 export default {
@@ -7,6 +12,13 @@ export default {
   data() {
     return {
       resumeURL: '#',
+      image: {
+        behance,
+        linkedin,
+        instagram,
+        spotify,
+        mail,
+      },
     }
   },
   components: {
@@ -36,14 +48,14 @@ export default {
 </script>
 
 <template>
-  <div class="menu-wrapper">
-      <ol class="menu">
-          <li>
-              <router-link to="/">home</router-link>
-          </li>
-          <!-- <li>
-              <router-link to="/about">about</router-link>
-          </li>         -->
+  <div class="menu-wrapper content">
+    <div class="socials">
+        <a href="https://www.behance.net/sumitsingh42" target="_blank"><img :src="image.behance"></a>
+        <a href="https://www.linkedin.com/in/sumit-singh-nift/" target="_blank"><img :src="image.linkedin"></a>
+        <a href="https://www.instagram.com/_sumitkumarsingh_/" target="_blank"><img :src="image.instagram"></a>
+        <a href="https://open.spotify.com/user/sumitscool.singh" target="_blank"><img :src="image.spotify"></a>
+      </div>
+      <ol class="menu">      
           <!-- <li>
               <router-link to="/contact">contact</router-link>
           </li> -->
@@ -51,17 +63,35 @@ export default {
               <a :href="resumeURL" download target="_blank">
                   <button>download resume</button>
               </a>
-          </li>            
+          </li>
+          <li>
+              <a href="mailto:sumit.singh19@nift.ac.in" download target="_blank">
+                  <button  class="mail"><img :src="image.mail">mail me</button>
+              </a>
+          </li>
       </ol>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/styles/_variable.scss";
 
 .menu-wrapper {
   display: flex;
   justify-content: flex-end;
+  position: relative;
+}
+
+.socials {
+  position: absolute;
+  left: 0;
+  top: 70px;
+  display: flex;
+  flex-direction: column;
+
+  img {
+    margin-bottom: 10px;
+  }
 }
 
 .menu {
@@ -72,7 +102,7 @@ export default {
     margin-top: 50px;
     
     li {
-        margin-right: 90px;
+        margin-right: 30px;
         font-size: 16px;
 
         button {
@@ -83,6 +113,18 @@ export default {
             font-weight: 600;
             font-size: 16px;
             cursor: pointer;
+
+            &.mail {
+              background: transparent;
+              color: $off-white;
+              border-color: $off-white;
+              display: flex;
+              align-items: center;
+
+              img {
+                margin-right: 7px;
+              }
+            }
         }
     }
 }
