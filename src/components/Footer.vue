@@ -50,7 +50,7 @@ export default {
                 </button>
             </a>
             <p style="margin: 0; font-size: 40px;">|</p>
-            <a href="https://wa.me/918544128609">
+            <a href="https://wa.me/918544128609" target="_blank">
                 <img :src="image.whatsapp" alt="" srcset="">
             </a>
         </div>
@@ -125,7 +125,7 @@ export default {
         }
     }
 
-    span {
+    a {
         padding-left: 20px;
     }
   }
