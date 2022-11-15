@@ -172,7 +172,8 @@ export default {
                   display: flex;
                   align-items: center;
                   justify-content: center;
-                  color: $light-black;
+                  color: $off-white;
+                  text-decoration: none;
 
                   img {
                     margin-right: 7px;
