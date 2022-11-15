@@ -14,7 +14,9 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "skipLibCheck": true,
-    "types": ["node"],
+    "types": ["node", "vendor.d.ts"],
+    "noImplicitAny": false,
+    "allowJs": true,
   },
   "include": ["src"]
 }

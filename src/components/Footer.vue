@@ -147,4 +147,75 @@ export default {
     margin-top: 50px;
   }
 }
+
+@media screen and (max-width: $sm) {
+  .pre-footer {
+      padding-top: 40px;
+      padding-bottom: 40px;
+
+      h2 {
+          font-size: 30px;
+      }
+
+      p {
+          font-size: 14px;
+      }   
+  }
+
+  .footer-wrapper {
+      padding-top: 20px;
+      padding-bottom: 40px;
+  }
+
+  .footer {
+    width: 95%;
+    h3 {
+      font-size: 38px;
+      margin-bottom: 80px;
+    }
+
+    .contact {
+      display: flex;
+      align-items: center;
+
+      button {
+          background-color: $off-white;
+          padding: 10px 30px;
+          border-radius: 7px;
+          font-family: $font;
+          font-weight: 600;
+          font-size: 16px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          margin-right: 20px;
+
+          img {
+              margin-right: 7px;
+          }
+      }
+
+      a.whatsapp {
+          padding-left: 20px;
+      }
+    }
+
+    .socials {
+      display: flex;
+      align-items: center;
+      margin-top: 30px;
+
+      img {
+          margin-right: 20px;
+          height: 20px;
+      }
+    }
+
+    .company {
+      font-size: 14px;
+      color: #707070;
+      margin-top: 50px;
+    }
+  }
+}
 </style>

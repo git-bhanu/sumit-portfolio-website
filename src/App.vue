@@ -1,42 +1,35 @@
 <script lang="ts">
-import { createClient } from "contentful"
 import Header from '@/components/Header.vue';
 import Footer from '@/components/Footer.vue';
-
+import { mapStores, mapState } from 'pinia'
+import { useAppStore } from './store';
 
 export default {
   name: 'App',
   data() {
     return {
-      test: 'asds'
+      width: 0,
     }
+  },
+  computed: {
+    ...mapStores(useAppStore),
+    ...mapState(useAppStore, ['isMobile'])
   },
   components: {
     Header,
     Footer,
   },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onResize)
+  },
   mounted() {
-    // let data = this.getData()
-    // data.then((response: string) => {
-    //   console.log(response);
-    // })
+    this.onResize();
+    window.addEventListener('resize', this.onResize)
   },
   methods: {
-    async getData() {
-      let headingEl = '';
-      const client = createClient({
-      space: import.meta.env.VITE_CONTENTFUL_SPACE || '',
-      accessToken: import.meta.env.VITE_CONTENTFUL_ACCESSTOKEN || ''
-    });
-    await client.getEntries().then(function (entries: any) {
-      // log the title for all the entries that have it
-      entries.items.forEach(function (entry: any) {
-        if (entry.fields.meta === 'heading') {
-          headingEl = entry.fields.contentValue.content[0].content[0]['value'];
-        }
-      });
-    })
-    return headingEl;
+    onResize() {
+      this.width = document.body.clientWidth;
+      this.appStore.updateWidth(this.width);
     }
   }
 }
@@ -46,7 +39,7 @@ export default {
 
 <template>
   <div>
-    <Header/>
+    <Header v-if="!isMobile"/>
     <main>
       <router-view />
       <span>
