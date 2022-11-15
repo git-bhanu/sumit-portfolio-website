@@ -186,6 +186,7 @@ export default {
           font-weight: 600;
           font-size: 16px;
           cursor: pointer;
+          $color: light-black;
           display: flex;
           align-items: center;
           margin-right: 20px;

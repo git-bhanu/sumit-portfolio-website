@@ -79,8 +79,8 @@ export default {
 @media screen and (max-width: $sm) {
     .hero {
         width: 90%;
-        height: 80vh;
-        padding-bottom: 30px;
+        height: 70vh;
+        padding-bottom: 20px;
         .container {
             width: 100%;
             h1 {
