@@ -195,7 +195,7 @@ export default {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/styles/_variable.scss";
 
 .project-wrapper {
@@ -211,6 +211,10 @@ export default {
         display: flex;
         margin-bottom: 30px;
         height: 300px;
+
+        a {
+            text-decoration: none;
+        }
 
         .cover {
             width: 50%;
