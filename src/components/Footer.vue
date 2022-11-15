@@ -188,6 +188,7 @@ export default {
           padding: 10px 30px;
           border-radius: 7px;
           font-family: $font;
+          border: 1px solid $off-white;
           font-weight: 600;
           font-size: 16px;
           cursor: pointer;
