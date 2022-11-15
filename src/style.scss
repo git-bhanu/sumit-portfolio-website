@@ -19,6 +19,7 @@ a {
 
   @media screen and (max-width: $sm) {
     max-width: $sm;
+    width: 90%;
   }
   @media screen and (min-width: $md) {
     max-width: $md;

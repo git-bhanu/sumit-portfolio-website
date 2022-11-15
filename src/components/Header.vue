@@ -129,4 +129,56 @@ export default {
     }
 }
 
+@media screen and (max-width: $sm) {
+  .menu-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .socials {
+      position: relative;
+      flex-direction: row;
+      left: 10px;
+      top: 0;
+
+      img {
+        margin-right: 15px;
+      }
+    }
+
+    .menu {
+        list-style: none;
+        width: 100%;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 10px;
+        
+        li {
+            margin-right: 30px;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 10px;
+
+            button {
+                width: 100%;
+
+                &.mail {
+                  width: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+
+                  img {
+                    margin-right: 7px;
+                  }
+                }
+            }
+        }
+    }
+}
+
 </style>

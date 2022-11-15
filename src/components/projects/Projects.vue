@@ -198,7 +198,6 @@ export default {
 <style lang="scss">
 @import "@/assets/styles/_variable.scss";
 
-
 .project-wrapper {
     background-color: $dark-black;
     padding: 80px 0;
@@ -265,6 +264,51 @@ export default {
         &.active {
             background-color: $off-white;
             color: $dark-black;
+        }
+    }
+}
+
+@media screen and (max-width: $sm) {
+    .project-wrapper {
+        padding: 40px 0;
+    }
+
+    .project {
+        margin-top: 40px;
+        transition: all 2s ease-in-out;
+
+        .project-item {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 40px;
+            height: auto;
+
+            .cover {
+                width: 100%;
+                height: 200px;
+                margin-bottom: 20px;
+            }
+            .meta {
+                width: 100%;
+
+                h2 {
+                    font-size: 16px;
+                }
+
+                p {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+
+    .categories {
+        display: flex;
+        flex-wrap: wrap;
+
+        .category {
+            margin-right: 20px;
+            margin-bottom: 20px;
         }
     }
 }
