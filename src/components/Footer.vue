@@ -180,6 +180,7 @@ export default {
 
       a {
         color: $light-black;
+        text-decoration: none;
       }
 
       button {
@@ -190,7 +191,8 @@ export default {
           font-weight: 600;
           font-size: 16px;
           cursor: pointer;
-          color: light-black;
+          color: $light-black;
+          text-decoration: none;
           display: flex;
           align-items: center;
           margin-right: 20px;
