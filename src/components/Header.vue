@@ -163,6 +163,10 @@ export default {
             width: 100%;
             margin-bottom: 10px;
 
+            a {
+              text-decoration: none;
+            }
+
             button {
                 width: 100%;
                 color: $light-black;
@@ -173,7 +177,6 @@ export default {
                   align-items: center;
                   justify-content: center;
                   color: $off-white;
-                  text-decoration: none;
 
                   img {
                     margin-right: 7px;
