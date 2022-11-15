@@ -178,6 +178,10 @@ export default {
       display: flex;
       align-items: center;
 
+      a {
+        color: $light-black;
+      }
+
       button {
           background-color: $off-white;
           padding: 10px 30px;
@@ -186,7 +190,7 @@ export default {
           font-weight: 600;
           font-size: 16px;
           cursor: pointer;
-          $color: light-black;
+          color: light-black;
           display: flex;
           align-items: center;
           margin-right: 20px;

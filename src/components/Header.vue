@@ -165,12 +165,14 @@ export default {
 
             button {
                 width: 100%;
+                color: $light-black;
 
                 &.mail {
                   width: 100%;
                   display: flex;
                   align-items: center;
                   justify-content: center;
+                  color: $light-black;
 
                   img {
                     margin-right: 7px;
