@@ -109,6 +109,7 @@ export default {
             background-color: $off-white;
             padding: 10px 30px;
             border-radius: 7px;
+            border: 1px solid $off-white;
             font-family: $font;
             font-weight: 600;
             font-size: 16px;
