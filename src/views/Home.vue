@@ -32,7 +32,7 @@ export default {
             </h1>
             <div class="bottom-tile">
                 <span>
-                    <p>sumit kumar singh<br />communication design</p>
+                    <p>sumit kumar singh<br />communication designer</p>
                 </span>
 
                 <span>
