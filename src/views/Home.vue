@@ -1,49 +1,48 @@
 <script lang="ts">
-import Projects from '../components/projects/Projects.vue';
-import Header from '../components/Header.vue';
-import { mapState } from 'pinia'
-import { useAppStore } from '../store';
+import Projects from "../components/projects/Projects.vue";
+import Header from "../components/Header.vue";
+import { mapState } from "pinia";
+import { useAppStore } from "../store";
 
 export default {
-  name: 'Home',
-  data() {
-    return {
-        width: 0,
-    }
-  },
-  components: {
-    Projects,
-    Header,
-  },
-  mounted() {
-  },
-  methods: {
-  },
-  computed: {
-    ...mapState(useAppStore, ['isMobile'])
-  }
-}
+    name: "Home",
+    data() {
+        return {
+            width: 0,
+        };
+    },
+    components: {
+        Projects,
+        Header,
+    },
+    mounted() {},
+    methods: {},
+    computed: {
+        ...mapState(useAppStore, ["isMobile"]),
+    },
+};
 </script>
 
 <template>
-<div class="hero content">
-    <div class="container">
-        <h1>
-            i believe in learning & getting better with every passing project
-        </h1>
-        <div class="bottom-tile">
-            <span>
-                <p>sumit kumar singh<br />communication design student</p>
-            </span>
+    <div class="hero content">
+        <div class="container">
+            <h1>
+                i believe in learning & getting better with every passing
+                project
+            </h1>
+            <div class="bottom-tile">
+                <span>
+                    <p>sumit kumar singh<br />communication design</p>
+                </span>
 
-            <span>
-                <p>and i love listening<br />to good music</p>
-            </span>
+                <span>
+                    <p>and i love listening<br />to good music</p>
+                </span>
+            </div>
         </div>
     </div>
-</div>
-<Header v-if="isMobile"/>
-<Projects />
+    <Header v-if="isMobile" />
+    <Projects />
 </template>
 
 <style lang="scss" scoped>
@@ -70,7 +69,7 @@ export default {
         font-size: 16px;
 
         span:nth-child(1) {
-            margin-right: 60px; 
+            margin-right: 60px;
             font-weight: 600;
         }
     }
